@@ -48,7 +48,7 @@ public class FoodController {
     // 이화 주변 맛집 전체 리스트 GET
     @GetMapping("/list/all")
     public List<Food> getAllList(){
-        return foodRepository.findAll();
+        return foodService.getAllFood();
     }
 
     @GetMapping("/image") // 해당 음식점 imageURL 찾기

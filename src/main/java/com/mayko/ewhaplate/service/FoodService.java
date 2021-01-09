@@ -38,4 +38,10 @@ public class FoodService{
     public void register(Food food){
         foodRepository.save(food);
     }
+
+    @Transactional(readOnly = true)
+    public List<Food> getAllFood(){
+        return foodRepository.findAll();
+    }
+
 }
