@@ -7,9 +7,11 @@ import com.mayko.ewhaplate.dto.response.SuccessDto;
 import com.mayko.ewhaplate.entity.Food;
 import com.mayko.ewhaplate.repository.FoodRepository;
 import com.mayko.ewhaplate.service.FoodService;
+import com.mayko.ewhaplate.utils.GoogleImgSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -18,10 +20,13 @@ public class FoodController {
 
     private final FoodService foodService;
     private final FoodRepository foodRepository;
+    private final GoogleImgSearch googleImgSearch;
 
     // 추천 맛집 등록
     @PostMapping("/register")
-    public SuccessDto register(@RequestBody FoodRequestDto requestDto){
+    public SuccessDto register(@RequestBody FoodRequestDto requestDto) throws IOException {
+        String imageUrl = googleImgSearch.getImgUrl(requestDto.getName()); // 음식점이름 이미지 search한 후
+        requestDto.setImageUrl(imageUrl); // 이미지 URL 저장
         foodService.register(new Food(requestDto));
         return new SuccessDto(true);
     }
@@ -45,5 +50,11 @@ public class FoodController {
     public List<Food> getAllList(){
         return foodRepository.findAll();
     }
+
+    @GetMapping("/image") // 해당 음식점 imageURL 찾기
+    public String getImageUrl(@RequestParam String name) throws IOException {
+        return googleImgSearch.getImgUrl(name);
+    }
+
 
 }

@@ -32,11 +32,15 @@ public class Food {
     @Column(nullable = false)
     private String ewhaType;
 
+    @Column(nullable = true)
+    private String imageUrl;
+
     public Food(FoodRequestDto dto){
         this.address = dto.getAddress();
         this.name = dto.getName();
         this.phone = dto.getPhone();
         this.ewhaType = dto.getEwhaType();
         this.category = dto.getCategory();
+        this.imageUrl = dto.getImageUrl();
     }
 }

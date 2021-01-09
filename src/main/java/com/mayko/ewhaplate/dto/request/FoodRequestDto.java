@@ -16,4 +16,6 @@ public class FoodRequestDto {
     private String phone;
 
     private String ewhaType;
+
+    private String imageUrl;
 }
