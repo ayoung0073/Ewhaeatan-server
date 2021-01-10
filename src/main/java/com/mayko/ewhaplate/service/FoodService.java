@@ -1,9 +1,8 @@
 package com.mayko.ewhaplate.service;
 
-import com.mayko.ewhaplate.dto.request.FoodRandomRequestDto;
-import com.mayko.ewhaplate.dto.response.ExceptionDto;
-import com.mayko.ewhaplate.entity.Food;
 import com.mayko.ewhaplate.repository.FoodRepository;
+import com.mayko.ewhaplate.dto.request.FoodRandomRequestDto;
+import com.mayko.ewhaplate.entity.Food;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class FoodService{
-    private final FoodRepository foodRepository;
+    private final com.mayko.ewhaplate.repository.FoodRepository foodRepository;
 
     // 랜덤 맛집 뽑기
     @Transactional(readOnly = true)

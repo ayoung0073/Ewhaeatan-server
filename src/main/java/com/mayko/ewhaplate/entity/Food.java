@@ -1,11 +1,14 @@
 package com.mayko.ewhaplate.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mayko.ewhaplate.dto.request.FoodRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -32,8 +35,11 @@ public class Food {
     @Column(nullable = false)
     private String ewhaType;
 
-    @Column(nullable = true)
+    @Column
     private String imageUrl;
+
+    @OneToMany(mappedBy = "food", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private List<Menu> menuList;
 
     public Food(FoodRequestDto dto){
         this.address = dto.getAddress();
