@@ -29,6 +29,8 @@ dependencies {
     // Java 객체를 JSON 표현으로 변환하는 데 사용할 수 있는 Java 라이브러리
     compile group: 'org.jsoup', name: 'jsoup', version: '1.11.3' // 파싱
     compile group: 'org.json', name: 'json', version: '20160810'
+
+    implementation 'junit:junit:4.12'
 }
 
 test {

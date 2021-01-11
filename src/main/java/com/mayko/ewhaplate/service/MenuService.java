@@ -23,24 +23,15 @@ public class MenuService {
     private final FoodRepository foodRepository;
 
 
-    public String registerMenu(Food food) throws IOException {
-        String url = "https://www.siksinhot.com";
-        String categoryUrl = url + "/search?keywords=" + food.getName() + "%20이대";
-
-        Document doc = Jsoup.connect(categoryUrl).get();
-        Element element = doc.selectFirst(".cont a");
-        String href = element.attr("href");
-        String clickUrl = url + href;
-
-        doc = Jsoup.connect(clickUrl).get();
+    public void registerMenu(Food food, Document doc) throws IOException {
 
         Elements categories = doc.select(".menu_ul li");
+
         List<Menu> menuList = new ArrayList<>();
         for(Element e : categories){
             String menuName = e.getElementsByClass("tit").text(); // 메뉴이름 가져오기
             if(menuName.contains("냉면 (물,비빔,매운)"))
                 break;
-
             // 가격 가져오기
             int price = Integer.parseInt(e.getElementsByTag("label").text().replace(",", "").replace(" 원", ""));
             //System.out.println(e.getElementsByTag("label").text());
@@ -48,7 +39,6 @@ public class MenuService {
         }
 
         menuRepository.saveAll(menuList);
-        return categoryUrl;
     }
 
     public String addMenu(String name) throws IOException {
@@ -69,7 +59,6 @@ public class MenuService {
         List<Menu> menuList = new ArrayList<>();
         for(Element e : categories){
             String menuName = e.getElementsByClass("tit").text(); // 메뉴이름 가져오기
-            System.out.println(menuName);
             if(menuName.contains("냉면 (물,비빔,매운)"))
                 break;
 

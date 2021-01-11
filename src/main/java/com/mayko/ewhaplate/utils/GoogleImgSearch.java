@@ -20,7 +20,7 @@ public class GoogleImgSearch {
             JSONObject json = null;
 
             json = new JSONObject(res.body());
-            System.out.println(res.body());
+            //System.out.println(res.body());
             imageUrl =
                     json.getJSONArray("items").getJSONObject(0).getJSONObject("pagemap").getJSONArray("cse_thumbnail").getJSONObject(0).getString("src");
             System.out.println(imageUrl);

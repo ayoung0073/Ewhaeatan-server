@@ -2,6 +2,7 @@ package com.mayko.ewhaplate.api;
 
 import com.mayko.ewhaplate.dto.request.FoodRandomRequestDto;
 import com.mayko.ewhaplate.dto.request.FoodRequestDto;
+import com.mayko.ewhaplate.dto.request.FoodWantRequestDto;
 import com.mayko.ewhaplate.dto.response.SuccessDto;
 import com.mayko.ewhaplate.entity.Food;
 import com.mayko.ewhaplate.service.FoodService;
@@ -26,10 +27,8 @@ public class FoodController {
     public SuccessDto register(@RequestBody FoodRequestDto requestDto) throws IOException {
         String imageUrl = googleImgSearch.getImgUrl(requestDto.getName()); // 음식점이름 이미지 search한 후
         requestDto.setImageUrl(imageUrl); // 이미지 URL 저장
-        Food food = new Food(requestDto);
 
-        foodService.register(food);
-        menuService.registerMenu(food); // crawling service
+        foodService.register(requestDto);
 
         return new SuccessDto(true);
     }
@@ -40,9 +39,9 @@ public class FoodController {
         return foodService.getRandomFood(requestDto);
     }
 
-    // 카테고리 포함 x, 이화 장소가 ewhaType인 맛집 리스트
+    // 카테고리 포함 O, 이화 장소가 ewhaType인 맛집 리스트
     @PostMapping("/list")
-    public List<Food> getList(@RequestBody FoodRandomRequestDto requestDto){
+    public List<Food> getList(@RequestBody FoodWantRequestDto requestDto){
         List<Food> list = foodService.getFoodList(requestDto);
         if(list.size() == 0) throw new IllegalArgumentException("해당 맛집이 없습니다");
         else return list;
@@ -55,12 +54,18 @@ public class FoodController {
     }
 
     @GetMapping("/image") // 해당 음식점 imageURL 찾기
-    public String getImageUrl(@RequestParam String name) throws IOException {
+    public String getImageUrl(@RequestParam String name) {
         return googleImgSearch.getImgUrl(name);
     }
 
-    @GetMapping("/addMenu")
+    @GetMapping("/addMenu") // 메뉴만 추가
     public String addMenu(@RequestParam String name) throws IOException {
         return menuService.addMenu(name);
     }
+
+    @GetMapping("/{foodId}") // 맛집 자세히 보기
+    public Food getFood(@PathVariable("foodId") Long foodId) {
+        return foodService.getFood(foodId);
+    }
 }
+

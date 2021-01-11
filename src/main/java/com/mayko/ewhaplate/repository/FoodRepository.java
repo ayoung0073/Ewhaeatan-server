@@ -10,7 +10,8 @@ public interface FoodRepository extends JpaRepository<Food, Long> {
 
     List<Food> findAllByCategoryIsNotInAndEwhaType(Collection<String> categories, String ewhaType);
 
-    Optional<Food> findDistinctByName(String name);
+    List<Food> findAllByCategoryIsInAndEwhaType(Collection<String> categories, String ewhaType);
 
+    Optional<Food> findDistinctByName(String name);
 
 }
