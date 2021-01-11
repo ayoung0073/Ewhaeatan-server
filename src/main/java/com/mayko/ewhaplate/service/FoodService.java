@@ -69,6 +69,10 @@ public class FoodService{
             requestDto.setAddress(address);
             requestDto.setPhone(phone);
         }
+        else{
+            requestDto.setPhone("");
+            requestDto.setAddress("");
+        }
         Food food = new Food(requestDto);
 
         if(!phone.equals("02-499-0458")){
