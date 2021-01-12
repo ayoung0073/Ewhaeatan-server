@@ -31,6 +31,9 @@ dependencies {
     compile group: 'org.json', name: 'json', version: '20160810'
 
     implementation 'junit:junit:4.12'
+
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+
 }
 
 test {
