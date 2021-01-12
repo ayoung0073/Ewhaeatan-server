@@ -27,8 +27,10 @@ public class LoggingAspect {
             type = "Controller - '";
         }
 
-        logger.info(type + name + "." + joinPoint.getSignature().getName() + "'");
-        logger.info(Arrays.toString(joinPoint.getArgs()));
+        // Controller - 'com.mayko.ewhaplate.api.FoodController.getList'
+        // logger.info(type + name + "." + joinPoint.getSignature().getName() + "'");
+
+        logger.info(joinPoint.getSignature().getName() + " -> " + Arrays.toString(joinPoint.getArgs()));
         // getName - 메서드 이름
         return joinPoint.proceed();
     }

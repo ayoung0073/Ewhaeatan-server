@@ -11,5 +11,5 @@ public class FoodWantRequestDto {
 
     private List<String> categories; // 원하는 카테고리
 
-    private String ewhaType;
+    private List<String> ewhaTypes;
 }
