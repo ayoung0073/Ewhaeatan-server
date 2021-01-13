@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface FoodRepository extends JpaRepository<Food, Long> {
 
     // random 메서드
-    List<Food> findAllByCategoryIsNotInAndEwhaTypeIsIn(Collection<String> categories, Collection<String> ewhaType);
+    List<Food> findAllByCategoryIsNotInAndEwhaType(Collection<String> categories, String ewhaType);
 
     // category, ewhaType 요청 둘 다 있는 경우
     List<Food> findAllByCategoryIsInAndEwhaTypeIsIn(Collection<String> categories, Collection<String> ewhaType);

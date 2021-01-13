@@ -26,7 +26,7 @@ public class FoodService{
     // 랜덤 맛집 뽑기
     @Transactional(readOnly = true)
     public Food getRandomFood(FoodRandomRequestDto requestDto) {
-        List<Food> foodList = foodRepository.findAllByCategoryIsNotInAndEwhaTypeIsIn(requestDto.getCategories(), requestDto.getEwhaTypes());
+        List<Food> foodList = foodRepository.findAllByCategoryIsNotInAndEwhaType(requestDto.getCategories(), requestDto.getEwhaType());
         // 난수를 foodList 개수로 나눈 나머지 -> 랜덤 음식
         if(foodList.size() == 0) throw new IllegalArgumentException("해당 맛집이 없습니다");
         else {

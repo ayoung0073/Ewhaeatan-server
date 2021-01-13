@@ -11,5 +11,5 @@ public class FoodRandomRequestDto {
 
     private List<String> categories; // 제외할 카테고리
 
-    private List<String> ewhaTypes;
+    private String ewhaType;
 }
