@@ -19,8 +19,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class FoodService{
-    private final FoodRepository foodRepository;
 
+    private final FoodRepository foodRepository;
     private final MenuService menuService;
 
     // 랜덤 맛집 뽑기
@@ -63,10 +63,20 @@ public class FoodService{
 
     // 맛집 등록
     @Transactional
-    public void register(FoodRequestDto requestDto) throws IOException {
+    public void register(FoodRequestDto requestDto) throws Exception {
 
+        if(foodRepository.findByName(requestDto.getName()).isPresent()) {
+            throw new Exception("이미 존재하는 맛집입니다.");
+        }
+
+        String categoryUrl = "";
         String url = "https://www.siksinhot.com";
-        String categoryUrl = url + "/search?keywords=" + requestDto.getName() + "%20이대";
+        if(requestDto.getEwhaType().equals("신촌")) {
+            categoryUrl = url + "/search?keywords=" + requestDto.getName() + "%20신촌";
+        }
+        else {
+            categoryUrl = url + "/search?keywords=" + requestDto.getName() + "%20이대";
+        }
 
         Document doc = Jsoup.connect(categoryUrl).get();
         Element element = doc.selectFirst(".cont a");

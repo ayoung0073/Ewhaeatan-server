@@ -41,12 +41,21 @@ public class MenuService {
         menuRepository.saveAll(menuList);
     }
 
+
     public String addMenu(String name) throws IOException {
         String url = "https://www.siksinhot.com";
         Food food = foodRepository.findDistinctByName(name).orElseThrow(
                 () -> new IllegalArgumentException("해당 음식점이 없습니다")
         );
-        String categoryUrl = url + "/search?keywords=" + food.getName() + "%20이대";
+
+        String categoryUrl = "";
+        if(food.getEwhaType().equals("신촌")) {
+            categoryUrl = url + "/search?keywords=" + food.getName() + "%20신촌";
+        }
+        else {
+            categoryUrl = url + "/search?keywords=" + food.getName() + "%20이대";
+        }
+
 
         Document doc = Jsoup.connect(categoryUrl).get();
         Element element = doc.selectFirst(".cont a");

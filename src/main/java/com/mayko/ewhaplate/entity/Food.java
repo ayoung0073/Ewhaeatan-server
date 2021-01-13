@@ -49,4 +49,13 @@ public class Food {
         this.category = dto.getCategory();
         this.imageUrl = dto.getImageUrl();
     }
+
+    public Food(String address, String name, String phone, String category, String ewhaType, String imageUrl) {
+        this.name = name;
+        this.category = category;
+        this.address = address;
+        this.phone = phone;
+        this.ewhaType = ewhaType;
+        this.imageUrl = imageUrl;
+    }
 }

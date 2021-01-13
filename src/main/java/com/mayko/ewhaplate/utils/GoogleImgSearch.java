@@ -28,7 +28,7 @@ public class GoogleImgSearch {
 
         }catch (Exception e){
             imageUrl = "";
-            System.out.println(e.getLocalizedMessage());
+            //System.out.println(e.getLocalizedMessage());
             e.printStackTrace();
         }
         return imageUrl;

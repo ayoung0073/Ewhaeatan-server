@@ -8,6 +8,9 @@ import java.util.Optional;
 
 public interface FoodRepository extends JpaRepository<Food, Long> {
 
+    // 중복 음식점 확인
+    Optional<Food> findByName(String name);
+
     // random 메서드
     List<Food> findAllByCategoryIsNotInAndEwhaType(Collection<String> categories, String ewhaType);
 

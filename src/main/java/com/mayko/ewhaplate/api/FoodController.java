@@ -24,7 +24,7 @@ public class FoodController {
 
     // 추천 맛집 등록
     @PostMapping("/register")
-    public SuccessDto register(@RequestBody FoodRequestDto requestDto) throws IOException {
+    public SuccessDto register(@RequestBody FoodRequestDto requestDto) throws Exception {
         String imageUrl = googleImgSearch.getImgUrl(requestDto.getName()); // 음식점이름 이미지 search한 후
         requestDto.setImageUrl(imageUrl); // 이미지 URL 저장
 
@@ -58,6 +58,7 @@ public class FoodController {
         return googleImgSearch.getImgUrl(name);
     }
 
+    // name에 이대, 신촌 포함하기
     @GetMapping("/addMenu") // 메뉴만 추가
     public String addMenu(@RequestParam String name) throws IOException {
         return menuService.addMenu(name);
@@ -67,5 +68,6 @@ public class FoodController {
     public Food getFood(@PathVariable("foodId") Long foodId) {
         return foodService.getFood(foodId);
     }
+
 }
 
