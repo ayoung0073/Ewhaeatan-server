@@ -2,7 +2,6 @@ package com.mayko.ewhaplate.service;
 
 import com.mayko.ewhaplate.dto.request.FoodRequestDto;
 import com.mayko.ewhaplate.dto.request.FoodWantRequestDto;
-import com.mayko.ewhaplate.entity.Menu;
 import com.mayko.ewhaplate.repository.FoodRepository;
 import com.mayko.ewhaplate.dto.request.FoodRandomRequestDto;
 import com.mayko.ewhaplate.entity.Food;
@@ -13,7 +12,6 @@ import org.jsoup.nodes.Element;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -26,7 +24,13 @@ public class FoodService{
     // 랜덤 맛집 뽑기
     @Transactional(readOnly = true)
     public Food getRandomFood(FoodRandomRequestDto requestDto) {
-        List<Food> foodList = foodRepository.findAllByCategoryIsNotInAndEwhaType(requestDto.getCategories(), requestDto.getEwhaType());
+        List<Food> foodList;
+        if(requestDto.getCategories().size() == 0){
+            foodList = foodRepository.findAll();
+        }
+        else {
+            foodList = foodRepository.findAllByCategoryIsNotInAndEwhaType(requestDto.getCategories(), requestDto.getEwhaType());
+        }
         // 난수를 foodList 개수로 나눈 나머지 -> 랜덤 음식
         if(foodList.size() == 0) throw new IllegalArgumentException("해당 맛집이 없습니다");
         else {
