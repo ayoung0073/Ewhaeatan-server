@@ -9,19 +9,20 @@ import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AllFoodSearch {
+public class NaverRegion {
     public static void main(String[] args) {
         String clientId = "1bPp_xDKgotRuUNyhVI9"; //애플리케이션 클라이언트 아이디값"
         String clientSecret = "L2JASQg2H8"; //애플리케이션 클라이언트 시크릿값"
 
         String text = null;
         try {
-            text = URLEncoder.encode("이대 맛집", "UTF-8");
+            text = URLEncoder.encode("장군닭갈비 이대", "UTF-8");
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException("검색어 인코딩 실패",e);
         }
 
-        String apiURL = "https://openapi.naver.com/v1/search/local?query=" + text + "&display=5";    // json 결과
+        String apiURL = "https://openapi.naver.com/v1/search/local?query=" + text;    // json 결과
+
         //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
 
         Map<String, String> requestHeaders = new HashMap<>();

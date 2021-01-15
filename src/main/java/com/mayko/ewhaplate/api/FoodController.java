@@ -12,7 +12,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
@@ -25,8 +27,9 @@ public class FoodController {
     // 추천 맛집 등록
     @PostMapping("/register")
     public SuccessDto register(@RequestBody FoodRequestDto requestDto) throws Exception {
-        String imageUrl = googleImgSearch.getImgUrl(requestDto.getName()); // 음식점이름 이미지 search한 후
-        requestDto.setImageUrl(imageUrl); // 이미지 URL 저장
+        Map<String, String> map = googleImgSearch.getUrl(requestDto.getName()); // 음식점이름 이미지 search한 후
+        requestDto.setImageUrl(map.get("imageUrl")); // 이미지 URL 저장
+        requestDto.setUrl(map.get("url")); // 이미지 URL 저장
 
         foodService.register(requestDto);
 
@@ -53,9 +56,9 @@ public class FoodController {
         return foodService.getAllFood();
     }
 
-    @GetMapping("/image") // 해당 음식점 imageURL 찾기
-    public String getImageUrl(@RequestParam String name) {
-        return googleImgSearch.getImgUrl(name);
+    @GetMapping("/url") // 해당 음식점 imageURL 찾기
+    public Map<String, String> getUrl(@RequestParam String name) {
+        return googleImgSearch.getUrl(name);
     }
 
     // name에 이대, 신촌 포함하기

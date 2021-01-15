@@ -18,4 +18,6 @@ public class FoodRequestDto {
     private String ewhaType;
 
     private String imageUrl;
+
+    private String url;
 }

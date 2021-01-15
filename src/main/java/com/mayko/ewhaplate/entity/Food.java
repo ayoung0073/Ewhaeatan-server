@@ -41,6 +41,9 @@ public class Food {
     @OneToMany(mappedBy = "food", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Menu> menuList;
 
+    @Column
+    private String url;
+
     public Food(FoodRequestDto dto){
         this.address = dto.getAddress();
         this.name = dto.getName();
@@ -48,6 +51,7 @@ public class Food {
         this.ewhaType = dto.getEwhaType();
         this.category = dto.getCategory();
         this.imageUrl = dto.getImageUrl();
+        this.url = dto.getUrl();
     }
 
     public Food(String address, String name, String phone, String category, String ewhaType, String imageUrl) {
