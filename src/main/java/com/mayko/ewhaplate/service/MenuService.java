@@ -25,20 +25,23 @@ public class MenuService {
 
     public void registerMenu(Food food, Document doc) throws IOException {
 
-        Elements categories = doc.select(".menu_ul li");
-
-        List<Menu> menuList = new ArrayList<>();
-        for(Element e : categories){
-            String menuName = e.getElementsByClass("tit").text(); // 메뉴이름 가져오기
-            if(menuName.contains("냉면 (물,비빔,매운)"))
-                break;
-            // 가격 가져오기
-            int price = Integer.parseInt(e.getElementsByTag("label").text().replace(",", "").replace(" 원", ""));
-            //System.out.println(e.getElementsByTag("label").text());
-            menuList.add(new Menu(food, menuName, price));
+        Element menuElement = doc.selectFirst(".menu_ul li");
+        //List<Menu> menuList = new ArrayList<>();
+        String menuName = menuElement.getElementsByClass("tit").text(); // 메뉴이름 가져오기
+        int price = 0;
+        if(menuName.contains("냉면 (물,비빔,매운)")) {
+            menuName = "";
+            price = 0;
         }
+        // 가격 가져오기
+        else
+            price = Integer.parseInt(menuElement.getElementsByTag("label").text().replace(",", "").replace(" 원", ""));
+        //System.out.println(e.getElementsByTag("label").text());
 
-        menuRepository.saveAll(menuList);
+        Menu menu = new Menu(food, menuName, price);
+
+
+        menuRepository.save(menu);
     }
 
 

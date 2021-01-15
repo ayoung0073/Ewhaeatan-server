@@ -38,8 +38,8 @@ public class Food {
     @Column
     private String imageUrl;
 
-    @OneToMany(mappedBy = "food", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-    private List<Menu> menuList;
+    @OneToOne(mappedBy = "food", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    private Menu menu;
 
     @Column
     private String url;
