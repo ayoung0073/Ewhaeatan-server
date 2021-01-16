@@ -1,4 +1,4 @@
-package com.mayko.ewhaplate.api;
+package com.mayko.ewhaplate.controller.api;
 
 import com.mayko.ewhaplate.dto.request.FoodRandomRequestDto;
 import com.mayko.ewhaplate.dto.request.FoodRequestDto;
@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -70,6 +69,19 @@ public class FoodController {
     @GetMapping("/{foodId}") // 맛집 자세히 보기
     public Food getFood(@PathVariable("foodId") Long foodId) {
         return foodService.getFood(foodId);
+    }
+
+    @PutMapping("/update/{foodId}")
+    public SuccessDto updateFood(@PathVariable("foodId") Long foodId, @RequestBody FoodRequestDto requestDto){
+        foodService.updateFood(foodId, requestDto);
+        return new SuccessDto(true);
+    }
+
+
+    @DeleteMapping("/delete/{foodId}")
+    public SuccessDto deleteFood(@PathVariable("foodId") Long foodId) {
+        foodService.deleteFood(foodId);
+        return new SuccessDto(true);
     }
 
 }

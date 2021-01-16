@@ -1,4 +1,4 @@
-package com.mayko.ewhaplate.api;
+package com.mayko.ewhaplate.controller.api;
 
 import com.mayko.ewhaplate.dto.response.ExceptionDto;
 import org.slf4j.Logger;

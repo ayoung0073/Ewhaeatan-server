@@ -62,4 +62,12 @@ public class Food {
         this.ewhaType = ewhaType;
         this.imageUrl = imageUrl;
     }
+
+    public void updateFood(FoodRequestDto dto){
+        this.name = dto.getName();
+        this. category = dto.getCategory();
+        this.ewhaType = dto.getEwhaType();
+        this.url = dto.getUrl();
+        this. imageUrl = dto.getImageUrl();
+    }
 }

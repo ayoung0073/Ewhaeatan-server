@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <title>FOOD</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body align="center">
+<table id="reply-box" class="list-group" align="center">
+        <tr align="center">
+            <td>ID</td>
+            <td><textarea cols="100" rows="1"  id="id" readonly>{{food.id}}</textarea></td> <!--&nbsp; : 한칸 띄어줌-->
+        </tr>
+        <tr align="center">
+            <td>이름</td>
+            <td><textarea cols="100" rows="1" id="name">{{food.name}}</textarea></td> <!--&nbsp; : 한칸 띄어줌-->
+        </tr>
+        <tr align="center">
+            <td>카테고리</td>
+            <td><textarea cols="100" rows="1" id="category">{{food.category}}</textarea></td> <!--&nbsp; : 한칸 띄어줌-->
+        </tr>
+        <tr align="center">
+            <td>이화타입</td>
+            <td><textarea cols="100" rows="1" id="ewhaType">{{food.ewhaType}}</textarea></td> <!--&nbsp; : 한칸 띄어줌-->
+        </tr>
+        <tr align="center">
+            <td>링크주소</td>
+            <td><textarea cols="100" rows="2" id="url">{{food.url}}</textarea></td> <!--&nbsp; : 한칸 띄어줌-->
+        </tr>
+        <tr align="center">
+            <td>이미지주소</td>
+            <td><textarea cols="100" rows="2" type="text" id="imageUrl">{{food.imageUrl}}</textarea></td> <!--&nbsp; : 한칸 띄어줌-->
+            <td>   </td>
+            <td><button id="btn-update">수정</button></td>
+        </tr>
+
+</table>
+<script src="/js/food.js"></script>
+</body>

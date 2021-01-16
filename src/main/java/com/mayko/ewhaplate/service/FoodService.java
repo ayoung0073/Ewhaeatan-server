@@ -113,4 +113,15 @@ public class FoodService{
         return foodRepository.findAll();
     }
 
+    @Transactional
+    public void deleteFood(Long id){
+        foodRepository.deleteById(id);
+    }
+    @Transactional
+    public void updateFood(Long id, FoodRequestDto requestDto){
+        Food food = foodRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("해당 맛집이 없습니다")
+        );
+        food.updateFood(requestDto);
+    }
 }
