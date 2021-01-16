@@ -34,7 +34,7 @@ public class FoodService{
         // 난수를 foodList 개수로 나눈 나머지 -> 랜덤 음식
         if(foodList.size() == 0) throw new IllegalArgumentException("해당 맛집이 없습니다");
         else {
-            int random = (int) ((Math.random() * 10000) % (foodList.size()));
+            int random = (int) ((Math.random() * 100) % (foodList.size()));
             return foodList.get(random);
         }
     }
