@@ -34,7 +34,7 @@ public class FoodService{
         // 난수를 foodList 개수로 나눈 나머지 -> 랜덤 음식
         if(foodList.size() == 0) throw new IllegalArgumentException("해당 맛집이 없습니다");
         else {
-            int random = (int) ((Math.random() * 100) % (foodList.size()));
+            int random = (int) ((Math.random() * 10000) % (foodList.size()));
             return foodList.get(random);
         }
     }
@@ -43,14 +43,16 @@ public class FoodService{
     @Transactional(readOnly = true)
     public List<Food> getFoodList(FoodWantRequestDto requestDto){
 
+        int categorySize = requestDto.getCategories().size();
+        int ewhaTypeSize = requestDto.getEwhaTypes().size();
         // 카테고리만 요청 온 경우
-        if(requestDto.getEwhaTypes().size() == 0 && requestDto.getCategories().size() != 0)
+        if(ewhaTypeSize == 0 && categorySize != 0)
             return foodRepository.findAllByCategoryIsIn(requestDto.getCategories());
         // ewhaType만 요청 온 경우
-        else if(requestDto.getEwhaTypes().size() != 0 && requestDto.getCategories().size() == 0)
+        else if(ewhaTypeSize != 0 && categorySize == 0)
             return foodRepository.findAllByEwhaTypeIsIn(requestDto.getEwhaTypes());
         // 요청 둘 다 없는 경우는 전체 리스트 return
-        else if(requestDto.getEwhaTypes().size() == 0 && requestDto.getCategories().size() == 0)
+        else if(ewhaTypeSize == 0 && categorySize == 0)
             return foodRepository.findAll();
         // 둘 다 요청 온 경우
         else

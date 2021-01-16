@@ -1,9 +1,3 @@
-#spring:
-#  datasource:
-#    driver-class-name: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://springboot-db.cszagrzyjprb.ap-northeast-2.rds.amazonaws.com:3306/ewha-plate?characterEncoding=UTF-8&useTimezone=true&serverTimezone=Asia/Seoul
-#    username: ayo_db
-#    password: ayong2gadb
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
