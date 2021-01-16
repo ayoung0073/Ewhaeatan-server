@@ -31,8 +31,18 @@
                         <td>{{name}}</td> <!--&nbsp; : 한칸 띄어줌-->
                         <td>{{category}}&nbsp;</td> <!--&nbsp; : 한칸 띄어줌-->
                         <td>{{ewhaType}}&nbsp;</td> <!--&nbsp; : 한칸 띄어줌-->
-                        <td><a href="{{url}}">{{url}}</a>&nbsp;</td> <!--&nbsp; : 한칸 띄어줌-->
-                        <td><a href="{{imageUrl}}">{{imageUrl}}</a>&nbsp;</td> <!--&nbsp; : 한칸 띄어줌-->
+                        {{#url}}
+                            <td><a href="{{url}}">{{url}}</a>&nbsp;</td> <!--&nbsp; : 한칸 띄어줌-->
+                        {{/url}}
+                        {{^url}}
+                            <td></td> <!--&nbsp; : 한칸 띄어줌-->
+                        {{/url}}
+                        {{#imageUrl}}
+                          <td><a href="{{imageUrl}}">{{imageUrl}}</a>&nbsp;</td> <!--&nbsp; : 한칸 띄어줌-->
+                        {{/imageUrl}}
+                        {{^imageUrl}}
+                            <td></td> <!--&nbsp; : 한칸 띄어줌-->
+                        {{/imageUrl}}
                         <td><button onclick="location.href='/getFood/{{id}}'" class="badge">수정</button></td>
                         <td><button onclick="index.delete({{id}})" class="badge">삭제</button></td>
                     </tr>

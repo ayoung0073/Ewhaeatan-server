@@ -28,12 +28,21 @@
         </tr>
         <tr align="center">
             <td>링크주소</td>
-            <td><textarea cols="100" rows="2" id="url">{{food.url}}</textarea></td> <!--&nbsp; : 한칸 띄어줌-->
+            {{#url}}
+                <td><textarea cols="100" rows="2" type="text" id="url">{{food.url}}</textarea></td> <!--&nbsp; : 한칸 띄어줌-->
+            {{/url}}
+            {{^url}}
+                <td><textarea cols="100" rows="2" type="text" id="url"></textarea></td> <!--&nbsp; : 한칸 띄어줌-->
+            {{/url}}
         </tr>
         <tr align="center">
             <td>이미지주소</td>
-            <td><textarea cols="100" rows="2" type="text" id="imageUrl">{{food.imageUrl}}</textarea></td> <!--&nbsp; : 한칸 띄어줌-->
-            <td>   </td>
+            {{#imageUrl}}
+                <td><textarea cols="100" rows="2" type="text" id="imageUrl">{{food.imageUrl}}</textarea></td> <!--&nbsp; : 한칸 띄어줌-->
+            {{/imageUrl}}
+            {{^imageUrl}}
+                <td><textarea cols="100" rows="2" type="text" id="imageUrl"></textarea></td> <!--&nbsp; : 한칸 띄어줌-->
+            {{/imageUrl}}
             <td><button id="btn-update">수정</button></td>
         </tr>
 
