@@ -12,16 +12,16 @@ public interface FoodRepository extends JpaRepository<Food, Long> {
     Optional<Food> findByName(String name);
 
     // random 메서드
-    List<Food> findAllByCategoryIsNotInAndEwhaType(Collection<String> categories, String ewhaType);
+    List<Food> findAllByCategoryNotInAndEwhaType(Collection<String> categories, String ewhaType);
 
     // category, ewhaType 요청 둘 다 있는 경우
-    List<Food> findAllByCategoryIsInAndEwhaTypeIsIn(Collection<String> categories, Collection<String> ewhaType);
+    List<Food> findAllByCategoryInAndEwhaTypeIn(Collection<String> categories, Collection<String> ewhaType);
 
     // category만 요청 있는 경우
-    List<Food> findAllByCategoryIsIn(Collection<String> categories);
+    List<Food> findAllByCategoryIn(Collection<String> categories);
 
     // ewhaType만 요청 있는 경우
-    List<Food> findAllByEwhaTypeIsIn(Collection<String> ewhaTypes);
+    List<Food> findAllByEwhaTypeIn(Collection<String> ewhaTypes);
 
 
 

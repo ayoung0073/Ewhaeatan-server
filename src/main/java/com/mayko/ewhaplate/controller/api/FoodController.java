@@ -45,6 +45,7 @@ public class FoodController {
     @PostMapping("/list")
     public List<Food> getList(@RequestBody FoodWantRequestDto requestDto){
         List<Food> list = foodService.getFoodList(requestDto);
+        System.out.println(list.size());
         if(list.size() == 0) throw new IllegalArgumentException("해당 맛집이 없습니다");
         else return list;
     }

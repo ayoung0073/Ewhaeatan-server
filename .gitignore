@@ -35,7 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
-AllFoodSearch.java
 NaverRegion.java
 NaverSearch.java
 GoogleSearch.java

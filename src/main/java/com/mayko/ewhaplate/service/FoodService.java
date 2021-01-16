@@ -29,7 +29,7 @@ public class FoodService{
             foodList = foodRepository.findAll();
         }
         else {
-            foodList = foodRepository.findAllByCategoryIsNotInAndEwhaType(requestDto.getCategories(), requestDto.getEwhaType());
+            foodList = foodRepository.findAllByCategoryNotInAndEwhaType(requestDto.getCategories(), requestDto.getEwhaType());
         }
         // 난수를 foodList 개수로 나눈 나머지 -> 랜덤 음식
         if(foodList.size() == 0) throw new IllegalArgumentException("해당 맛집이 없습니다");
@@ -42,21 +42,20 @@ public class FoodService{
     // 조건에 해당하는 맛집 리스트
     @Transactional(readOnly = true)
     public List<Food> getFoodList(FoodWantRequestDto requestDto){
-
         int categorySize = requestDto.getCategories().size();
         int ewhaTypeSize = requestDto.getEwhaTypes().size();
         // 카테고리만 요청 온 경우
         if(ewhaTypeSize == 0 && categorySize != 0)
-            return foodRepository.findAllByCategoryIsIn(requestDto.getCategories());
+            return foodRepository.findAllByCategoryIn(requestDto.getCategories());
         // ewhaType만 요청 온 경우
         else if(ewhaTypeSize != 0 && categorySize == 0)
-            return foodRepository.findAllByEwhaTypeIsIn(requestDto.getEwhaTypes());
+            return foodRepository.findAllByEwhaTypeIn(requestDto.getEwhaTypes());
         // 요청 둘 다 없는 경우는 전체 리스트 return
         else if(ewhaTypeSize == 0 && categorySize == 0)
             return foodRepository.findAll();
         // 둘 다 요청 온 경우
         else
-            return foodRepository.findAllByCategoryIsInAndEwhaTypeIsIn(requestDto.getCategories(), requestDto.getEwhaTypes());
+            return foodRepository.findAllByCategoryInAndEwhaTypeIn(requestDto.getCategories(), requestDto.getEwhaTypes());
     }
 
     // 조건에 해당하는 맛집 리스트

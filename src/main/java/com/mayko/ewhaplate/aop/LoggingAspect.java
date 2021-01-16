@@ -34,4 +34,22 @@ public class LoggingAspect {
         // getName - 메서드 이름
         return joinPoint.proceed();
     }
+
+    @Around("execution(* com.mayko.ewhaplate..api.*Service.*(..))")
+    public Object printService(ProceedingJoinPoint joinPoint) throws Throwable {
+
+        String type = "";
+        String name = joinPoint.getSignature().getDeclaringTypeName();
+
+        if (name.contains("Service")) {
+            type = "Service - '";
+        }
+
+        // Controller - 'com.mayko.ewhaplate.api.FoodController.getList'
+        // logger.info(type + name + "." + joinPoint.getSignature().getName() + "'");
+
+        logger.info(joinPoint.getSignature().getName() + " -> " + Arrays.toString(joinPoint.getArgs()));
+        // getName - 메서드 이름
+        return joinPoint.proceed();
+    }
 }
