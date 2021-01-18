@@ -26,7 +26,7 @@ public class FoodService{
     public Food getRandomFood(FoodRandomRequestDto requestDto) {
         List<Food> foodList;
         if(requestDto.getCategories().size() == 0){
-            foodList = foodRepository.findAll();
+            foodList = foodRepository.findAllByEwhaType(requestDto.getEwhaType());
         }
         else {
             foodList = foodRepository.findAllByCategoryNotInAndEwhaType(requestDto.getCategories(), requestDto.getEwhaType());
