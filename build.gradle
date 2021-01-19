@@ -37,14 +37,11 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-mustache
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-mustache', version: '2.3.4.RELEASE'
 
-//
-//    // https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-server
-//    compile group: 'de.codecentric', name: 'spring-boot-admin-starter-server', version: '2.3.1'
-//    // https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-client
-//    compile group: 'de.codecentric', name: 'spring-boot-admin-starter-client', version: '2.3.1'
-//    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
-//    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.3.4.RELEASE'
+    // https://mvnrepository.com/artifact/org.webjars/jquery
+    compile group: 'org.webjars', name: 'jquery', version: '3.4.1'
 
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-devtools
+    compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.4.0'
 
 }
 
