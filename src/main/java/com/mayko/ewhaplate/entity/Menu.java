@@ -32,4 +32,9 @@ public class Menu {
         this.menuName = menuName;
         this.price = price;
     }
+
+    public void updateMenu(String menuName, int price){
+        this.menuName = menuName;
+        this.price = price;
+    }
 }

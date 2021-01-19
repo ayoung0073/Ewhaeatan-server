@@ -65,9 +65,11 @@ public class Food {
 
     public void updateFood(FoodRequestDto dto){
         this.name = dto.getName();
-        this. category = dto.getCategory();
+        this.category = dto.getCategory();
         this.ewhaType = dto.getEwhaType();
         this.url = dto.getUrl();
-        this. imageUrl = dto.getImageUrl();
+        this.imageUrl = dto.getImageUrl();
+        this.address = dto.getAddress();
+        this.phone = dto.getPhone();
     }
 }

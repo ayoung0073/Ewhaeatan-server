@@ -1,5 +1,6 @@
 package com.mayko.ewhaplate.dto.request;
 
+import com.mayko.ewhaplate.entity.Menu;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -20,4 +21,8 @@ public class FoodRequestDto {
     private String imageUrl;
 
     private String url;
+
+    private String menuName;
+
+    private int price;
 }

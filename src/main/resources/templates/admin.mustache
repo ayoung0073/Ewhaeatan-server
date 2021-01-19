@@ -19,8 +19,11 @@
                 <th width="150">이름</th>
                 <th width="100">카테고리</th>
                 <th width="70">이화타입</th>
-                <th>링크주소</th>
-                <th>이미지주소</th>
+                <th width="280">주소</th>
+                <th width="150">대표메뉴</th>
+                <th width="130">연락처</th>
+                <th width="130">링크주소</th>
+                <th width="130">이미지주소</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -28,20 +31,33 @@
 <!--                <li id="food-{{id}}" class="list-group-item d-flex justify-content-between">-->
                     <tr align="center">
                         <td>{{id}}</td> <!--&nbsp; : 한칸 띄어줌-->
-                        <td>{{name}}</td> <!--&nbsp; : 한칸 띄어줌-->
-                        <td>{{category}}&nbsp;</td> <!--&nbsp; : 한칸 띄어줌-->
-                        <td>{{ewhaType}}&nbsp;</td> <!--&nbsp; : 한칸 띄어줌-->
+                        <td>{{name}}</td>
+                        <td>{{category}}&nbsp;</td>
+                        <td>{{ewhaType}}&nbsp;</td>
+                        {{#address}}
+                            <td>{{address}}</td>
+                        {{/address}}
+                        {{^address}}
+                            <td></td>
+                        {{/address}}
+                        {{#menu.menuName}}
+                            <td>{{menu.menuName}}</td>
+                        {{/menu.menuName}}
+                        {{^menu.menuName}}
+                            <td></td>
+                        {{/menu.menuName}}
+                        <td>{{phone}}&nbsp;</td>
                         {{#url}}
-                            <td><a href="{{url}}">{{url}}</a>&nbsp;</td> <!--&nbsp; : 한칸 띄어줌-->
+                            <td><a href="{{url}}">{{url}}</a>&nbsp;</td>
                         {{/url}}
                         {{^url}}
-                            <td></td> <!--&nbsp; : 한칸 띄어줌-->
+                            <td></td>
                         {{/url}}
                         {{#imageUrl}}
-                          <td><a href="{{imageUrl}}">{{imageUrl}}</a>&nbsp;</td> <!--&nbsp; : 한칸 띄어줌-->
+                          <td><a href="{{imageUrl}}">{{imageUrl}}</a>&nbsp;</td>
                         {{/imageUrl}}
                         {{^imageUrl}}
-                            <td></td> <!--&nbsp; : 한칸 띄어줌-->
+                            <td></td>
                         {{/imageUrl}}
                         <td><button onclick="location.href='/getFood/{{id}}'" class="badge">수정</button></td>
                         <td><button onclick="index.delete({{id}})" class="badge">삭제</button></td>

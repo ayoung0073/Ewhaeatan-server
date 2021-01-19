@@ -2,9 +2,11 @@ package com.mayko.ewhaplate.service;
 
 import com.mayko.ewhaplate.dto.request.FoodRequestDto;
 import com.mayko.ewhaplate.dto.request.FoodWantRequestDto;
+import com.mayko.ewhaplate.entity.Menu;
 import com.mayko.ewhaplate.repository.FoodRepository;
 import com.mayko.ewhaplate.dto.request.FoodRandomRequestDto;
 import com.mayko.ewhaplate.entity.Food;
+import com.mayko.ewhaplate.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -20,6 +22,7 @@ public class FoodService{
 
     private final FoodRepository foodRepository;
     private final MenuService menuService;
+    private final MenuRepository menuRepository;
 
     // 랜덤 맛집 뽑기
     @Transactional(readOnly = true)
@@ -118,11 +121,16 @@ public class FoodService{
     public void deleteFood(Long id){
         foodRepository.deleteById(id);
     }
+
     @Transactional
     public void updateFood(Long id, FoodRequestDto requestDto){
         Food food = foodRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("해당 맛집이 없습니다")
         );
         food.updateFood(requestDto);
+        Menu menu = menuRepository.findByFoodId(food.getId()).orElseThrow(
+                () -> new IllegalArgumentException("해당 메뉴 없습니다")
+        );
+        menu.updateMenu(requestDto.getMenuName(), requestDto.getPrice());
     }
 }

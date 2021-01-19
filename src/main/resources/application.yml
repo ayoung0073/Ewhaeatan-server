@@ -28,28 +28,5 @@ spring:
     serialization:
       fail-on-empty-beans: false
 
-#  boot:
-#    admin:
-#      client:
-#        url: http://localhost:8080
-#  #https://ewha-plate.herokuapp.com/
-#        # war 로 기동시 service-url 추가 해야함
-##        auto-registration: true
-##        instance:
-##          name: ewha-plate
-##          service-url: http://localhost:8080
-
-
-
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: '*'
-#  endpoint:
-#    health:
-#      show-details: always
-
-
-#server:
-#  port: 18080
+admin:
+  password: mayko

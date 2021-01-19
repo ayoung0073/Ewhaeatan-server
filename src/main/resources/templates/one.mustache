@@ -16,33 +16,65 @@
         </tr>
         <tr align="center">
             <td>이름</td>
-            <td><textarea cols="100" rows="1" id="name">{{food.name}}</textarea></td> <!--&nbsp; : 한칸 띄어줌-->
+            <td><textarea cols="100" rows="1" id="name">{{food.name}}</textarea></td>
         </tr>
         <tr align="center">
             <td>카테고리</td>
-            <td><textarea cols="100" rows="1" id="category">{{food.category}}</textarea></td> <!--&nbsp; : 한칸 띄어줌-->
+            <td><textarea cols="100" rows="1" id="category">{{food.category}}</textarea></td>
         </tr>
         <tr align="center">
             <td>이화타입</td>
-            <td><textarea cols="100" rows="1" id="ewhaType">{{food.ewhaType}}</textarea></td> <!--&nbsp; : 한칸 띄어줌-->
+            <td><textarea cols="100" rows="1" id="ewhaType">{{food.ewhaType}}</textarea></td>
+        </tr>
+        <tr align="center">
+            <td>주소</td>
+            {{#food.address}}
+                <td><textarea cols="100" rows="1" type="text" id="address">{{food.address}}</textarea></td>
+            {{/food.address}}
+            {{^food.address}}
+                <td><textarea cols="100" rows="1" type="text" id="address"></textarea></td>
+            {{/food.address}}
+        </tr>
+        <tr align="center">
+            {{#food.menu.menuName}}
+                <td>대표메뉴</td>
+                <td><textarea cols="100" rows="1" type="text" id="menuName">{{food.menu.menuName}}</textarea></td>
+                <td>가격</td>
+                <td><textarea cols="100" rows="1" type="text" id="price">{{food.menu.price}}</textarea></td>
+            {{/food.menu.menuName}}
+            {{^food.menu.menuName}}
+                <td>대표메뉴</td>
+                <td><textarea cols="100" rows="1" type="text" id="menuName"></textarea></td>
+                <td>가격</td>
+                <td><textarea cols="100" rows="1" type="text" id="price"></textarea></td>
+            {{/food.menu.menuName}}
+        </tr>
+        <tr align="center">
+            <td>연락처</td>
+            {{#food.phone}}
+                <td><textarea cols="100" rows="1" type="text" id="phone">{{food.phone}}</textarea></td>
+            {{/food.phone}}
+            {{^food.phone}}
+                <td><textarea cols="100" rows="1" type="text" id="phone"></textarea></td>
+            {{/food.phone}}
         </tr>
         <tr align="center">
             <td>링크주소</td>
-            {{#url}}
+            {{#food.url}}
                 <td><textarea cols="100" rows="2" type="text" id="url">{{food.url}}</textarea></td> <!--&nbsp; : 한칸 띄어줌-->
-            {{/url}}
-            {{^url}}
+            {{/food.url}}
+            {{^food.url}}
                 <td><textarea cols="100" rows="2" type="text" id="url"></textarea></td> <!--&nbsp; : 한칸 띄어줌-->
-            {{/url}}
+            {{/food.url}}
         </tr>
         <tr align="center">
             <td>이미지주소</td>
-            {{#imageUrl}}
+            {{#food.imageUrl}}
                 <td><textarea cols="100" rows="2" type="text" id="imageUrl">{{food.imageUrl}}</textarea></td> <!--&nbsp; : 한칸 띄어줌-->
-            {{/imageUrl}}
-            {{^imageUrl}}
+            {{/food.imageUrl}}
+            {{^food.imageUrl}}
                 <td><textarea cols="100" rows="2" type="text" id="imageUrl"></textarea></td> <!--&nbsp; : 한칸 띄어줌-->
-            {{/imageUrl}}
+            {{/food.imageUrl}}
             <td><button id="btn-update">수정</button></td>
         </tr>
 
