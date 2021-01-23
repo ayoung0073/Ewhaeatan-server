@@ -23,7 +23,6 @@ public class GoogleImgSearch {
             JSONObject json = null;
 
             json = new JSONObject(res.body());
-//            System.out.println(res.body());
 
             url = json.getJSONArray("items").getJSONObject(0).getString("link");
             imageUrl =
@@ -31,12 +30,8 @@ public class GoogleImgSearch {
 
             map.put("imageUrl", imageUrl);
             map.put("url", url);
-//            System.out.println(url);
-//            System.out.println(imageUrl);
-
 
         }catch (Exception e){
-            //System.out.println(e.getLocalizedMessage());
             e.printStackTrace();
         }
         return map;

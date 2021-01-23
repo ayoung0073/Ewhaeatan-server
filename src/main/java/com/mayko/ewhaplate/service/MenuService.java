@@ -22,7 +22,6 @@ public class MenuService {
     private final MenuRepository menuRepository;
     private final FoodRepository foodRepository;
 
-
     public void registerMenu(Food food, Document doc) throws IOException {
 
         Element menuElement = doc.selectFirst(".menu_ul li");
@@ -44,7 +43,6 @@ public class MenuService {
         menuRepository.save(menu);
     }
 
-
     public String addMenu(String name) throws IOException {
         String url = "https://www.siksinhot.com";
         Food food = foodRepository.findDistinctByName(name).orElseThrow(
@@ -58,7 +56,6 @@ public class MenuService {
         else {
             categoryUrl = url + "/search?keywords=" + food.getName() + "%20이대";
         }
-
 
         Document doc = Jsoup.connect(categoryUrl).get();
         Element element = doc.selectFirst(".cont a");
@@ -78,7 +75,6 @@ public class MenuService {
             int price = Integer.parseInt(e.getElementsByTag("label").text()
                     .replace(",", "").replace(" 원", "")
                     .split(" ")[0]);
-            //System.out.println(e.getElementsByTag("label").text());
             menuList.add(new Menu(food, menuName, price));
         }
 
